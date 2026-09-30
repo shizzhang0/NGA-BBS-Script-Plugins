@@ -21,7 +21,7 @@
 
 ### 使用方式
 
-👉[点击安装](https://raw.githubusercontent.com/shizzhang0/NGA-BBS-Script-Plugins/main/StealthAdBlock/StealthAdBlock.user.js)，安装即可，无需配置
+👉[点击安装](https://greasyfork.org/zh-CN/scripts/598029)，安装即可，无需配置
 
 安装后可在[NGA优化摸鱼体验]**设置面板** -> **插件管理** 中看到本插件
 
