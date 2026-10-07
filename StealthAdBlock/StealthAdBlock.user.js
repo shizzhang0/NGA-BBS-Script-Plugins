@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         NGA优化摸鱼体验插件-隐形广告屏蔽
 // @namespace    https://github.com/shizzhang0/NGA-BBS-Script-Plugins/tree/main/StealthAdBlock
-// @version      1.0.0
+// @version      1.1.0
 // @author       timothy
-// @description  用占位卡片在视觉上遮盖广告，广告元素、广告请求与曝光统计保持原样，不易被网站察觉
+// @description  用占位卡片在视觉上遮盖页面中的广告，全屏插页广告直接跳过
 // @license      MIT
 // @match        *://bbs.nga.cn/*
 // @match        *://ngabbs.com/*
@@ -16,6 +16,18 @@
 
 (function (registerPlugin) {
     'use strict';
+    // 插页广告: 进入版块/帖子前NGA会先跳到/misc/adpage_insert_N.html?<目标地址>，停留15秒才自动跳回
+    // 在document-start时直接跳到目标地址，与点击"点此跳过广告"(页面的getJump())效果相同
+    // 只放行NGA自身的域名，避免被构造的链接带到站外
+    if (/^\/misc\/adpage_insert/.test(location.pathname)) {
+        const target = location.search.replace(/^\?\d*/, '')
+        let url = null
+        try { url = new URL(target) } catch (e) {}
+        if (url && /^https?:$/.test(url.protocol) && /(^|\.)(nga\.cn|ngabbs\.com|178\.com|ngacn\.cc|nga\.donews\.com|bigccq\.cn)$/.test(url.hostname)) {
+            location.replace(url.href)
+            return
+        }
+    }
     // 广告标记: NGA的ngaAds.genAds()生成的各类广告(图片/iframe/联盟/占位)中，都会带有引用ngaAds或SG_GG的事件属性
     // 帖子内容中的事件属性会被NGA过滤，所以此标记只会出现在广告中
     const AD_MARKER = ':is([onload*="ngaAds["], [onerror*="ngaAds["], [onerror*="SG_GG("])'
@@ -49,7 +61,7 @@
     registerPlugin({
         name: 'StealthAdBlock',
         title: '隐形广告屏蔽',
-        desc: '用占位卡片在视觉上遮盖广告，广告元素、广告请求与曝光统计保持原样，不易被网站察觉',
+        desc: '用占位卡片在视觉上遮盖页面中的广告，全屏插页广告直接跳过',
         excelGridDone: false,
         renderAlwaysFunc() {
             // 主脚本的样式在初始化结束时才插入，所以在循环中等到Excel表头显示后再生成一次行号列

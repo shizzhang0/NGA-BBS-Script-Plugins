@@ -8,7 +8,7 @@
 
 | 插件 | 说明 | 安装 |
 | ---- | ---- | ---- |
-| [隐形广告屏蔽](StealthAdBlock) | 用占位卡片在视觉上遮盖广告，广告元素、广告请求与曝光统计保持原样，不易被网站察觉 | [GreasyFork](https://greasyfork.org/zh-CN/scripts/598029) / [GitHub](https://raw.githubusercontent.com/shizzhang0/NGA-BBS-Script-Plugins/main/StealthAdBlock/StealthAdBlock.user.js) |
+| [隐形广告屏蔽](StealthAdBlock) | 用占位卡片在视觉上遮盖页面中的广告，全屏插页广告直接跳过 | [GreasyFork](https://greasyfork.org/zh-CN/scripts/598029) / [GitHub](https://raw.githubusercontent.com/shizzhang0/NGA-BBS-Script-Plugins/main/StealthAdBlock/StealthAdBlock.user.js) |
 | [Excel模式显示版头](ExcelShowForumHeader) | Excel模式下显示版头与子版面，首页也进入Excel模式并将版面列表伪装为表格 | [GreasyFork](https://greasyfork.org/zh-CN/scripts/598042) / [GitHub](https://raw.githubusercontent.com/shizzhang0/NGA-BBS-Script-Plugins/main/ExcelShowForumHeader/ExcelShowForumHeader.user.js) |
 
 ## 安装
