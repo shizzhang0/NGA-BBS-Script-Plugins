@@ -1,8 +1,27 @@
-# NGA优化摸鱼体验插件-隐形广告屏蔽
+<div align="center">
 
-## ⚠本脚本为[NGA优化摸鱼体验](https://greasyfork.org/zh-CN/scripts/393991-nga%E4%BC%98%E5%8C%96%E6%91%B8%E9%B1%BC%E4%BD%93%E9%AA%8C)的插件，使用需先安装👉[本体](https://greasyfork.org/zh-CN/scripts/393991-nga%E4%BC%98%E5%8C%96%E6%91%B8%E9%B1%BC%E4%BD%93%E9%AA%8C)👈
+<img src="icon.svg" width="96" alt="隐形广告屏蔽">
 
-### 概述
+# 隐形广告屏蔽
+
+**用占位卡片在视觉上遮盖广告，而不是删除广告**
+
+[NGA优化摸鱼体验](https://github.com/kisshang1993/NGA-BBS-Script) 插件 · 收录于 [NGA-BBS-Script-Plugins](https://github.com/shizzhang0/NGA-BBS-Script-Plugins)
+
+[![GreasyFork Version](https://img.shields.io/greasyfork/v/598029?label=GreasyFork&color=ff9900)](https://greasyfork.org/zh-CN/scripts/598029)
+[![GreasyFork Installs](https://img.shields.io/greasyfork/dt/598029?label=%E5%AE%89%E8%A3%85%E9%87%8F&color=ff9900)](https://greasyfork.org/zh-CN/scripts/598029)
+[![License: MIT](https://img.shields.io/badge/License-MIT-success.svg)](https://github.com/shizzhang0/NGA-BBS-Script-Plugins/blob/main/LICENSE)
+
+[**📥 GreasyFork 安装**](https://greasyfork.org/zh-CN/scripts/598029) · [GitHub 安装](https://raw.githubusercontent.com/shizzhang0/NGA-BBS-Script-Plugins/main/StealthAdBlock/StealthAdBlock.user.js) · [反馈问题](https://github.com/shizzhang0/NGA-BBS-Script-Plugins/issues)
+
+</div>
+
+> [!IMPORTANT]
+> 本脚本为 [NGA优化摸鱼体验](https://greasyfork.org/zh-CN/scripts/393991-nga%E4%BC%98%E5%8C%96%E6%91%B8%E9%B1%BC%E4%BD%93%E9%AA%8C) 的插件，使用需先安装👉[本体](https://greasyfork.org/zh-CN/scripts/393991-nga%E4%BC%98%E5%8C%96%E6%91%B8%E9%B1%BC%E4%BD%93%E9%AA%8C)👈
+
+---
+
+## ✨ 概述
 
 用占位卡片在视觉上遮盖广告，而不是删除广告
 
@@ -20,17 +39,17 @@
 | 护眼模式 | 绿色卡片 |
 | Excel 模式 | 一行空白单元格，行号列与表格对齐，支持腾讯文档、WPS、Office 主题 |
 
-### 使用方式
+## 🚀 使用方式
 
 👉[点击安装](https://greasyfork.org/zh-CN/scripts/598029)，安装即可，无需配置
 
 安装后可在[NGA优化摸鱼体验]**设置面板** -> **插件管理** 中看到本插件
 
-### 配置项
+## ⚙️ 配置项
 
 暂无可配置项
 
-### 原理
+## 🔍 原理
 
 - NGA 的广告由 `ngaAds.genAds()` 生成，每种广告结构里都带有引用 `ngaAds` 或 `SG_GG` 的 `onload`/`onerror` 属性，帖子内容中的事件属性会被 NGA 过滤，所以可以用它精确识别广告位
 - 楼层右侧的广告图片会被本体的图片增强移除 `onload`，所以额外通过 NGA 给该广告位设置的 `class="null"` 来识别
@@ -41,17 +60,17 @@
 - 全屏插页广告的地址是 `/misc/adpage_insert_N.html?<目标地址>`，插件在页面开始加载时就跳到 `?` 后面的目标地址，效果与点击“点此跳过广告”相同
   - 只跳转到 NGA 自身的域名，与页面自带的跳转逻辑一致
 
-### 注意事项
+## 📌 注意事项
 
 - 需要浏览器支持 CSS `:has()` 选择器：Chrome / Edge 105+、Firefox 121+、Safari 15.4+
 - 不安装本体也可以遮盖广告，但不会适配显示模式
 
-### 已知问题
+## 🐛 已知问题
 
 - 楼层右侧广告位的高度跟随整个楼层，长楼层的占位卡片会同样很长，与 NGA 原生的深色广告栏一致
 - Excel 模式下如果页面出现横向滚动条并左右滚动，占位卡片的行号列不会跟随移动
 - 只识别由 `ngaAds.genAds()` 生成的广告，如果 NGA 将来改用其他方式投放广告，需要更新识别规则
 
-### 反馈问题
+## 💬 反馈问题
 
 https://github.com/shizzhang0/NGA-BBS-Script-Plugins/issues
