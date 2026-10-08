@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name         NGA优化摸鱼体验插件-隐形广告屏蔽
 // @namespace    https://github.com/shizzhang0/NGA-BBS-Script-Plugins/tree/main/StealthAdBlock
-// @version      1.1.1
+// @version      1.1.2
 // @author       timothy
+// @icon         data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cmVjdCB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgcng9IjI0IiBmaWxsPSIjMDAwIi8+PHRleHQgeD0iNjQiIHk9IjUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmb250LXNpemU9IjM2IiBmaWxsPSIjZmZmIj5OR0E8L3RleHQ+PHJlY3QgeD0iMTQiIHk9IjYwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQ0IiByeD0iNiIgZmlsbD0iI2Y5MCIvPjx0ZXh0IHg9IjY0IiB5PSI5NiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iYm9sZCIgZm9udC1zaXplPSIzNiIgZmlsbD0iIzAwMCI+QUQ8L3RleHQ+PHBhdGggZD0iTTM2IDEwMGw1Ni0zNiIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjYiLz48L3N2Zz4=
 // @description  用占位卡片在视觉上遮盖页面中的广告，全屏插页广告直接跳过
 // @license      MIT
 // @match        *://bbs.nga.cn/*
