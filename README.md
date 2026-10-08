@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="StealthAdBlock/icon.svg" width="64" alt="隐形广告屏蔽">&nbsp;&nbsp;<img src="ExcelShowForumHeader/icon.svg" width="64" alt="Excel模式显示版头">
+<img src="icon.svg" width="96" alt="NGA-BBS-Script-Plugins">
 
 # NGA-BBS-Script-Plugins
 
