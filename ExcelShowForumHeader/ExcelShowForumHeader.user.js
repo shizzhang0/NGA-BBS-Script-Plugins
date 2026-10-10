@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         NGA优化摸鱼体验插件-Excel模式显示版头
 // @namespace    https://github.com/shizzhang0/NGA-BBS-Script-Plugins/tree/main/ExcelShowForumHeader
-// @version      1.1.1
+// @version      1.2.0
 // @author       timothy
 // @icon         data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cmVjdCB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgcng9IjI0IiBmaWxsPSIjMDAwIi8+PHRleHQgeD0iNjQiIHk9IjUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmb250LXNpemU9IjM2IiBmaWxsPSIjZmZmIj5OR0E8L3RleHQ+PHJlY3QgeD0iMTQiIHk9IjYwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQ0IiByeD0iNiIgZmlsbD0iI2Y5MCIvPjxwYXRoIGQ9Ik0zNiA2OWg1NnYyNkgzNnpNMzYgODJoNTZNNTUgNjl2MjZNNzMgNjl2MjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSI2Ii8+PC9zdmc+
-// @description  Excel模式下显示版头与子版面，首页也进入Excel模式并将版面列表伪装为表格
+// @description  Excel模式下显示版头与子版面，首页也进入Excel模式并将版面列表伪装为表格，弹框改为白色样式
 // @license      MIT
 // @match        *://bbs.nga.cn/*
 // @match        *://ngabbs.com/*
@@ -31,15 +31,21 @@
     registerPlugin({
         name: 'ExcelShowForumHeader',
         title: 'Excel模式显示版头',
-        desc: 'Excel模式下显示版头与子版面，首页也进入Excel模式并将版面列表伪装为表格',
+        desc: 'Excel模式下显示版头与子版面，首页也进入Excel模式并将版面列表伪装为表格，弹框改为白色样式',
         settings: [{
             key: 'indexEnabled',
             title: '首页显示为Excel表格',
             desc: '开启本体的Excel模式后，首页也自动进入Excel模式，并将分类、轮播与版面排成表格\n关闭后首页保持本体原有的行为\n修改后刷新页面生效',
             default: true
+        }, {
+            key: 'popupEnabled',
+            title: '弹框使用白色样式',
+            desc: 'Excel模式下，将NGA的弹框(开始菜单、回复、评分等)由米黄色改为白色，底部的用户名改为浅灰色的状态栏\n修改后刷新页面生效',
+            default: true
         }],
         styleReady: false,
         indexStyleReady: false,
+        popupStyleReady: false,
         columnWidth: 0,
         // 是否取消过本体对版头内容的隐藏
         toppedTopicUnhidden: false,
@@ -48,6 +54,45 @@
         renderAlwaysFunc() {
             this.renderIndex()
             this.renderForumHeader()
+            this.renderPopup()
+        },
+        /**
+         * 弹框: 将NGA的弹框改为白色样式
+         * 样式均以Excel模式的body class为前提，切换模式后自动生效或恢复，只需生成一次
+         */
+        renderPopup() {
+            // 本体保存插件配置后需刷新页面生效
+            if (this.popupStyleReady || !this.pluginSettings.popupEnabled) return
+            // 边框颜色跟随当前Excel主题的网格线，未进入Excel模式时表头不显示，等待进入后再生成
+            const column = this.mainScript.libs.$('.hld__excel-h4:visible').first().children('.hld__excel-column')[0]
+            if (!column) return
+            const lineColor = getComputedStyle(column).borderRightColor
+            // 本体的暗色模式与护眼模式可与Excel模式同时开启，且已有各自的弹框配色，此时不修改
+            const pop = 'body.hld__excel-body:not(.hld__dark-mode):not(.hld__eye-care) .single_ttip2'
+            // NGA所有弹框共用.single_ttip2，只修改外框、标题栏与内容区的背景，不改动弹框内部的内容，避免影响回复框等
+            // 开始菜单(#startmenu)的分栏线与选中项改为灰色，NGA会拉长每栏最后一项的高度使各栏等高，选中项的灰底只画一行高；底部的用户名(#usernamebg)原为40px的深棕色大字，
+            // 改为一行浅灰色的状态栏，NGA会给较短的一行加letter-spacing以与最长的一行等宽，需一并取消
+            const style = document.createElement('style')
+            style.textContent = `
+            ${pop} {border:1px solid ${lineColor} !important;border-radius:0 !important;background:#fff !important;box-shadow:0 2px 8px rgba(0, 0, 0, 0.15) !important;}
+            ${pop} .tip_title {background:#fff !important;border-bottom:none !important;color:#333 !important;}
+            ${pop} .colored_text_btn {background:#fff !important;color:#666 !important;}
+            ${pop} .colored_text_btn svg {fill:#666 !important;}
+            ${pop} .colored_text_btn:hover {background:#e6e6e6 !important;color:#333 !important;}
+            ${pop} .colored_text_btn:hover svg {fill:#333 !important;}
+            ${pop} .div2 {background:#fff !important;}
+            ${pop} #startmenu .item {border-right-color:${lineColor} !important;}
+            ${pop} #startmenu .select {border-color:transparent !important;border-radius:0 !important;background:linear-gradient(#e6e6e6, #e6e6e6) no-repeat 0 0 / 100% 2.5em !important;}
+            ${pop} #startmenu .select .arrow {color:#333 !important;}
+            ${pop} #startmenu .recent {border-radius:0 !important;background:#f5f5f5 !important;box-shadow:none !important;}
+            ${pop} #usernamebg {display:flex !important;align-items:center;gap:8px;height:auto !important;margin:0 !important;padding:0 10px !important;border-top:1px solid ${lineColor} !important;background:#f3f3f3 !important;color:#555 !important;font-family:inherit !important;font-size:12px !important;font-weight:normal !important;line-height:24px !important;text-transform:none !important;}
+            ${pop} #usernamebg span {display:inline !important;float:none !important;clear:none !important;padding:0 !important;font:inherit !important;letter-spacing:normal !important;}
+            ${pop} #usernamebg .title {color:#999 !important;}
+            ${pop} #usernamebg .id {margin-left:auto;color:#999 !important;}
+            ${pop} #usernamebg .id::before {content:"UID ";}
+            `
+            document.head.appendChild(style)
+            this.popupStyleReady = true
         },
         /**
          * 首页: 进入Excel模式，并将各分类的轮播与版面伪装为表格
