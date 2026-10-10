@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NGA优化摸鱼体验插件-Excel模式显示版头
 // @namespace    https://github.com/shizzhang0/NGA-BBS-Script-Plugins/tree/main/ExcelShowForumHeader
-// @version      1.2.0
+// @version      1.2.1
 // @author       timothy
 // @icon         data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cmVjdCB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgcng9IjI0IiBmaWxsPSIjMDAwIi8+PHRleHQgeD0iNjQiIHk9IjUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmb250LXNpemU9IjM2IiBmaWxsPSIjZmZmIj5OR0E8L3RleHQ+PHJlY3QgeD0iMTQiIHk9IjYwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQ0IiByeD0iNiIgZmlsbD0iI2Y5MCIvPjxwYXRoIGQ9Ik0zNiA2OWg1NnYyNkgzNnpNMzYgODJoNTZNNTUgNjl2MjZNNzMgNjl2MjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSI2Ii8+PC9zdmc+
 // @description  Excel模式下显示版头与子版面，首页也进入Excel模式并将版面列表伪装为表格，弹框改为白色样式
@@ -70,7 +70,8 @@
             // 本体的暗色模式与护眼模式可与Excel模式同时开启，且已有各自的弹框配色，此时不修改
             const pop = 'body.hld__excel-body:not(.hld__dark-mode):not(.hld__eye-care) .single_ttip2'
             // NGA所有弹框共用.single_ttip2，只修改外框、标题栏与内容区的背景，不改动弹框内部的内容，避免影响回复框等
-            // 开始菜单(#startmenu)的分栏线与选中项改为灰色，NGA会拉长每栏最后一项的高度使各栏等高，选中项的灰底只画一行高；底部的用户名(#usernamebg)原为40px的深棕色大字，
+            // 开始菜单(#startmenu)的分栏线与选中项改为灰色，NGA会拉长每栏最后一项的高度使各栏等高，选中项的灰底只画一行高；
+            // Excel模式下开始菜单固定在右上角，展开多栏后宽度不足，本体的设置入口会换行，而菜单项为固定高度，换行后会溢出盖住下方，改为自适应高度；底部的用户名(#usernamebg)原为40px的深棕色大字，
             // 改为一行浅灰色的状态栏，NGA会给较短的一行加letter-spacing以与最长的一行等宽，需一并取消
             const style = document.createElement('style')
             style.textContent = `
@@ -85,6 +86,7 @@
             ${pop} #startmenu .select {border-color:transparent !important;border-radius:0 !important;background:linear-gradient(#e6e6e6, #e6e6e6) no-repeat 0 0 / 100% 2.5em !important;}
             ${pop} #startmenu .select .arrow {color:#333 !important;}
             ${pop} #startmenu .recent {border-radius:0 !important;background:#f5f5f5 !important;box-shadow:none !important;}
+            ${pop} #startmenu .hld__setting-box {height:auto !important;min-height:2.5em;box-sizing:border-box;padding-top:0.5em !important;padding-bottom:0.5em !important;line-height:1.5em !important;}
             ${pop} #usernamebg {display:flex !important;align-items:center;gap:8px;height:auto !important;margin:0 !important;padding:0 10px !important;border-top:1px solid ${lineColor} !important;background:#f3f3f3 !important;color:#555 !important;font-family:inherit !important;font-size:12px !important;font-weight:normal !important;line-height:24px !important;text-transform:none !important;}
             ${pop} #usernamebg span {display:inline !important;float:none !important;clear:none !important;padding:0 !important;font:inherit !important;letter-spacing:normal !important;}
             ${pop} #usernamebg .title {color:#999 !important;}
