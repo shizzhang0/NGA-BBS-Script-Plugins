@@ -8,8 +8,8 @@
 
 [NGA优化摸鱼体验](https://github.com/kisshang1993/NGA-BBS-Script) 插件 · 收录于 [NGA-BBS-Script-Plugins](https://github.com/shizzhang0/NGA-BBS-Script-Plugins)
 
-[![GreasyFork Version](https://img.shields.io/greasyfork/v/598042?label=GreasyFork&color=217346)](https://greasyfork.org/zh-CN/scripts/598042)
-[![GreasyFork Installs](https://img.shields.io/greasyfork/dt/598042?label=%E5%AE%89%E8%A3%85%E9%87%8F&color=217346)](https://greasyfork.org/zh-CN/scripts/598042)
+[![GreasyFork Version](https://img.shields.io/greasyfork/v/598042?label=%E7%89%88%E6%9C%AC&color=ff9900)](https://greasyfork.org/zh-CN/scripts/598042)
+[![GreasyFork Installs](https://img.shields.io/greasyfork/dt/598042?label=%E5%AE%89%E8%A3%85%E9%87%8F&color=ff9900)](https://greasyfork.org/zh-CN/scripts/598042)
 [![License: MIT](https://img.shields.io/badge/License-MIT-success.svg)](https://github.com/shizzhang0/NGA-BBS-Script-Plugins/blob/main/LICENSE)
 
 [**📥 GreasyFork 安装**](https://greasyfork.org/zh-CN/scripts/598042) · [GitHub 安装](https://raw.githubusercontent.com/shizzhang0/NGA-BBS-Script-Plugins/main/ExcelShowForumHeader/ExcelShowForumHeader.user.js) · [反馈问题](https://github.com/shizzhang0/NGA-BBS-Script-Plugins/issues)
