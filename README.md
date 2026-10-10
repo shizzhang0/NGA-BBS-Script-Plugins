@@ -21,7 +21,7 @@
 | | 插件 | 说明 | 安装 |
 | :--: | ---- | ---- | ---- |
 | <img src="StealthAdBlock/icon.svg" width="40"> | [**隐形广告屏蔽**](StealthAdBlock) | 用占位卡片在视觉上遮盖页面中的广告，全屏插页广告直接跳过 | [GreasyFork](https://greasyfork.org/zh-CN/scripts/598029) / [GitHub](https://raw.githubusercontent.com/shizzhang0/NGA-BBS-Script-Plugins/main/StealthAdBlock/StealthAdBlock.user.js) |
-| <img src="ExcelShowForumHeader/icon.svg" width="40"> | [**Excel模式显示版头**](ExcelShowForumHeader) | Excel模式下显示版头与子版面，首页也进入Excel模式并将版面列表伪装为表格 | [GreasyFork](https://greasyfork.org/zh-CN/scripts/598042) / [GitHub](https://raw.githubusercontent.com/shizzhang0/NGA-BBS-Script-Plugins/main/ExcelShowForumHeader/ExcelShowForumHeader.user.js) |
+| <img src="ExcelShowForumHeader/icon.svg" width="40"> | [**Excel模式显示版头**](ExcelShowForumHeader) | Excel模式下显示版头与子版面，首页也进入Excel模式并将版面列表伪装为表格，弹框改为白色样式 | [GreasyFork](https://greasyfork.org/zh-CN/scripts/598042) / [GitHub](https://raw.githubusercontent.com/shizzhang0/NGA-BBS-Script-Plugins/main/ExcelShowForumHeader/ExcelShowForumHeader.user.js) |
 
 ## 📥 安装
 
