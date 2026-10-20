@@ -1,4 +1,4 @@
-<center><img src="https://raw.githubusercontent.com/shizzhang0/NGA-BBS-Script-Plugins/main/StealthAdBlock/icon.svg" width="96" alt="隐形广告屏蔽"></center>
+<img src="https://raw.githubusercontent.com/shizzhang0/NGA-BBS-Script-Plugins/main/StealthAdBlock/icon.svg" width="64" alt="隐形广告屏蔽">
 
 > **⚠️ 重要**
 >
