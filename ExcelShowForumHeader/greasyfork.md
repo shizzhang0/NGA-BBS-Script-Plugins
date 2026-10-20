@@ -1,4 +1,4 @@
-<center><img src="https://raw.githubusercontent.com/shizzhang0/NGA-BBS-Script-Plugins/main/ExcelShowForumHeader/icon.svg" width="96" alt="Excel模式显示版头"></center>
+<img src="https://raw.githubusercontent.com/shizzhang0/NGA-BBS-Script-Plugins/main/ExcelShowForumHeader/icon.svg" width="64" alt="Excel模式显示版头">
 
 > ⚠️ **本插件已更名为「Excel模式增强」并作为新脚本重新发布，本脚本不再更新。**
 >

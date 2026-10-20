@@ -1,4 +1,4 @@
-<center><img src="https://raw.githubusercontent.com/shizzhang0/NGA-BBS-Script-Plugins/main/ExcelModeEnhance/icon.svg" width="96" alt="Excel模式增强"></center>
+<img src="https://raw.githubusercontent.com/shizzhang0/NGA-BBS-Script-Plugins/main/ExcelModeEnhance/icon.svg" width="64" alt="Excel模式增强">
 
 > **⚠️ 重要**
 >
