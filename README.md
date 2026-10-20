@@ -21,7 +21,7 @@
 | | 插件 | 说明 | 安装 |
 | :--: | ---- | ---- | ---- |
 | <img src="StealthAdBlock/icon.svg" width="40"> | [**隐形广告屏蔽**](StealthAdBlock) | 用占位卡片在视觉上遮盖页面中的广告，全屏插页广告直接跳过 | [GreasyFork](https://greasyfork.org/zh-CN/scripts/598029) / [GitHub](https://raw.githubusercontent.com/shizzhang0/NGA-BBS-Script-Plugins/main/StealthAdBlock/StealthAdBlock.user.js) |
-| <img src="ExcelModeEnhance/icon.svg" width="40"> | [**Excel模式增强**](ExcelModeEnhance) | Excel模式下显示版头、子版面与顶部分页栏，首页、发帖页、用户中心、短消息等页面也进入Excel模式并伪装为表格，弹框改为白色样式 | [GitHub](https://raw.githubusercontent.com/shizzhang0/NGA-BBS-Script-Plugins/main/ExcelModeEnhance/ExcelModeEnhance.user.js) |
+| <img src="ExcelModeEnhance/icon.svg" width="40"> | [**Excel模式增强**](ExcelModeEnhance) | Excel模式下显示版头、子版面与顶部分页栏，首页、发帖页、用户中心、短消息等页面也进入Excel模式并伪装为表格，弹框改为白色样式 | [GreasyFork](https://greasyfork.org/zh-CN/scripts/601193) / [GitHub](https://raw.githubusercontent.com/shizzhang0/NGA-BBS-Script-Plugins/main/ExcelModeEnhance/ExcelModeEnhance.user.js) |
 
 ## 📥 安装
 
@@ -45,8 +45,11 @@
 <PluginName>/
 ├── <PluginName>.user.js   # 插件脚本
 ├── README.md              # 插件说明
+├── greasyfork.md          # GreasyFork 附加信息
 └── icon.svg               # 插件图标
 ```
+
+`greasyfork.md` 由 GreasyFork 的附加信息同步，内容与 `README.md` 的正文相同，但去掉了顶部的图标、标题与徽章，GitHub 专有的提示框改为普通引用块，链接均使用绝对地址；修改 `README.md` 时需同步修改
 
 ## 💬 反馈问题
 
