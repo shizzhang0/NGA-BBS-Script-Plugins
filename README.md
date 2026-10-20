@@ -49,7 +49,7 @@
 └── icon.svg               # 插件图标
 ```
 
-`greasyfork.md` 由 GreasyFork 的附加信息同步，内容与 `README.md` 的正文相同，但去掉了顶部的图标、标题与徽章，GitHub 专有的提示框改为普通引用块，链接均使用绝对地址；修改 `README.md` 时需同步修改
+`greasyfork.md` 由 GreasyFork 的附加信息同步，内容与 `README.md` 的正文相同，但顶部只保留居中的图标，去掉了标题与徽章（GreasyFork 页面自带），GitHub 专有的提示框改为普通引用块，图片与链接均使用绝对地址；修改 `README.md` 时需同步修改
 
 ## 💬 反馈问题
 
