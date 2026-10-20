@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         NGA优化摸鱼体验插件-Excel模式显示版头
 // @namespace    https://github.com/shizzhang0/NGA-BBS-Script-Plugins/tree/main/ExcelShowForumHeader
-// @version      1.2.1
+// @version      1.2.2
 // @author       timothy
 // @icon         data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cmVjdCB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgcng9IjI0IiBmaWxsPSIjMDAwIi8+PHRleHQgeD0iNjQiIHk9IjUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmb250LXNpemU9IjM2IiBmaWxsPSIjZmZmIj5OR0E8L3RleHQ+PHJlY3QgeD0iMTQiIHk9IjYwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQ0IiByeD0iNiIgZmlsbD0iI2Y5MCIvPjxwYXRoIGQ9Ik0zNiA2OWg1NnYyNkgzNnpNMzYgODJoNTZNNTUgNjl2MjZNNzMgNjl2MjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSI2Ii8+PC9zdmc+
-// @description  Excel模式下显示版头与子版面，首页也进入Excel模式并将版面列表伪装为表格，弹框改为白色样式
+// @description  【已更名】本插件已更名为“Excel模式增强”并重新发布，此版本不再更新，请安装新插件后卸载本插件
 // @license      MIT
 // @match        *://bbs.nga.cn/*
 // @match        *://ngabbs.com/*
@@ -27,11 +27,18 @@
     const INDEX_ROW_HEIGHT = 26
     // 首页的版面与轮播单元格最少所占的列数
     const INDEX_CELL_COLUMNS = 3
+    // 本插件已更名为"Excel模式增强"并作为新脚本重新发布，此版本为旧插件的最后一个版本
+    // 新插件的name，已安装新插件时本插件停止运行，避免两个插件重复添加样式
+    const NEW_PLUGIN_NAME = 'ExcelModeEnhance'
+    // 新插件的介绍页，包含安装链接
+    const NEW_PLUGIN_URL = 'https://github.com/shizzhang0/NGA-BBS-Script-Plugins/tree/main/ExcelModeEnhance'
+    // 记录上次提示更名的日期，每天最多提示一次
+    const RENAME_NOTICE_KEY = 'hld__excel_show_forum_header_rename_notice'
 
     registerPlugin({
         name: 'ExcelShowForumHeader',
-        title: 'Excel模式显示版头',
-        desc: 'Excel模式下显示版头与子版面，首页也进入Excel模式并将版面列表伪装为表格，弹框改为白色样式',
+        title: 'Excel模式显示版头(已更名)',
+        desc: '本插件已更名为“Excel模式增强”并重新发布，此版本不再更新，请安装新插件后卸载本插件',
         settings: [{
             key: 'indexEnabled',
             title: '首页显示为Excel表格',
@@ -51,10 +58,32 @@
         toppedTopicUnhidden: false,
         // 上次自动进入Excel模式的首页地址
         indexUrl: '',
+        // 是否已安装新插件，未判断时为null
+        replaced: null,
         renderAlwaysFunc() {
+            // 插件均在本体初始化时注册，首次循环时即可判断新插件是否已安装
+            if (this.replaced === null) {
+                this.replaced = this.mainScript.modules.some(module => module.type == 'plugin' && module.name == NEW_PLUGIN_NAME)
+                this.replaced || this.showRenameNotice()
+            }
+            if (this.replaced) return
             this.renderIndex()
             this.renderForumHeader()
             this.renderPopup()
+        },
+        /**
+         * 提示本插件已更名，引导安装新插件，每天最多提示一次，点击关闭后消失
+         */
+        showRenameNotice() {
+            const today = new Date().toDateString()
+            if (this.mainScript.getValue(RENAME_NOTICE_KEY) == today) return
+            this.mainScript.setValue(RENAME_NOTICE_KEY, today)
+            const notice = document.createElement('div')
+            notice.style.cssText = 'position:fixed;right:20px;bottom:60px;z-index:99999;max-width:360px;padding:12px 32px 12px 14px;border:1px solid #d0d0d0;border-radius:4px;background:#fff;box-shadow:0 2px 8px rgba(0, 0, 0, 0.15);color:#333;font-size:13px;line-height:1.6;'
+            notice.innerHTML = `插件“Excel模式显示版头”已更名为“Excel模式增强”并重新发布，此版本不再更新。<br>请<a href="${NEW_PLUGIN_URL}" target="_blank" style="color:#0563c1;text-decoration:underline;">安装新插件</a>，安装后卸载本插件即可
+                <a href="javascript:void(0)" style="position:absolute;top:4px;right:10px;color:#999;font-size:16px;text-decoration:none;">×</a>`
+            notice.lastElementChild.addEventListener('click', () => notice.remove())
+            document.body.appendChild(notice)
         },
         /**
          * 弹框: 将NGA的弹框改为白色样式

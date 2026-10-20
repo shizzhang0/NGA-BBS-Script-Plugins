@@ -2,89 +2,35 @@
 
 <img src="icon.svg" width="96" alt="Excel模式显示版头">
 
-# Excel模式显示版头
+# Excel模式显示版头（已更名）
 
-**增强本体的Excel模式，让更多页面伪装为表格**
+**本插件已更名为“Excel模式增强”并重新发布，此版本不再更新**
 
 [NGA优化摸鱼体验](https://github.com/kisshang1993/NGA-BBS-Script) 插件 · 收录于 [NGA-BBS-Script-Plugins](https://github.com/shizzhang0/NGA-BBS-Script-Plugins)
 
-[![GreasyFork Version](https://img.shields.io/greasyfork/v/598042?label=%E7%89%88%E6%9C%AC&color=ff9900)](https://greasyfork.org/zh-CN/scripts/598042)
-[![GreasyFork Installs](https://img.shields.io/greasyfork/dt/598042?label=%E5%AE%89%E8%A3%85%E9%87%8F&color=ff9900)](https://greasyfork.org/zh-CN/scripts/598042)
-[![License: MIT](https://img.shields.io/badge/License-MIT-success.svg)](https://github.com/shizzhang0/NGA-BBS-Script-Plugins/blob/main/LICENSE)
-
-[**📥 GreasyFork 安装**](https://greasyfork.org/zh-CN/scripts/598042) · [GitHub 安装](https://raw.githubusercontent.com/shizzhang0/NGA-BBS-Script-Plugins/main/ExcelShowForumHeader/ExcelShowForumHeader.user.js) · [反馈问题](https://github.com/shizzhang0/NGA-BBS-Script-Plugins/issues)
+[**👉 前往新插件：Excel模式增强**](../ExcelModeEnhance)
 
 </div>
 
-> [!IMPORTANT]
-> 本脚本为 [NGA优化摸鱼体验](https://greasyfork.org/zh-CN/scripts/393991-nga%E4%BC%98%E5%8C%96%E6%91%B8%E9%B1%BC%E4%BD%93%E9%AA%8C) 的插件，使用需先安装👉[本体](https://greasyfork.org/zh-CN/scripts/393991-nga%E4%BC%98%E5%8C%96%E6%91%B8%E9%B1%BC%E4%BD%93%E9%AA%8C)👈
-
 ---
 
-## ✨ 概述
+## 📦 为什么更名
 
-增强本体的Excel模式，让更多页面伪装为表格
+本插件最初只在Excel模式下显示版头与子版面，之后陆续加入了首页、发帖页、用户中心、短消息、提示页等页面的Excel样式，原名已无法概括现在的功能
 
-### 📋 版面：显示版头与子版面
+脚本管理器按脚本名识别脚本，直接改名会导致已安装的用户装成两份，因此以新名字“Excel模式增强”作为新脚本重新发布
 
-本体开启Excel模式后，版头、版规与子版面入口会被全部隐藏
+## 🔄 如何迁移
 
-本插件在Excel模式下重新显示它们，并伪装为表格单元格，与帖子列表融为一体
+1. 安装新插件👉[Excel模式增强](../ExcelModeEnhance)
+2. 在脚本管理器中卸载本插件“NGA优化摸鱼体验插件-Excel模式显示版头”
 
-- **版头**：显示为一个合并单元格，版主编写的表格改为Excel网格线，链接与文字统一为表格文字颜色，图片按比例缩小，隐藏链接后的“T”快速浏览按钮
-- **子版面**：每个子版面显示为一个单元格，包含名称、描述与“显示/不显示此版面主题”勾选框，单元格与表头的列对齐，名称过长时自动合并更多列，一行放不下时自动换行
-- 左侧行号列与帖子列表对齐，支持腾讯文档、WPS、Office 三种Excel主题
+新插件包含本插件的全部功能，迁移后需在[NGA优化摸鱼体验]**设置面板** -> **插件管理** 中重新设置关闭过的配置项（默认全部开启）
 
-### 🏠 首页：伪装为表格
+## 📌 最后一个版本（1.2.2）
 
-本体的Excel模式只在版面与帖子页生效，打开首页会直接显示原版页面；手动切换为Excel模式后，首页的版面入口又会被全部隐藏，只剩下轮播大图与广告
-
-本插件让首页也进入Excel模式，并将整个首页排成一张表格
-
-- **分类**：每个分类名(如网事杂谈、IT软硬件)占一整行，加粗显示
-- **轮播**：去掉图片，每条轮播显示为一个超链接样式的单元格
-- **版面**：每个版面显示为一个单元格，包含名称与描述，名称过长时自动合并更多列；“显示更多>>”可正常展开
-- 左侧显示连续的行号，空白单元格也显示网格线，单元格与表头的列对齐
-- 隐藏首页广告、版面图标与背景色
-
-### 💬 弹框：改为白色样式
-
-NGA的弹框(开始菜单、回复、评分等)为米黄底色、深棕色边框，开始菜单底部还有一条深棕色的大字用户名，在Excel界面中显得突兀
-
-本插件在Excel模式下将弹框改为类似Excel菜单的白色浮层
-
-- 白色背景、浅灰色细边框与淡阴影，边框颜色跟随当前Excel主题的网格线
-- 开始菜单的分栏线与选中项改为灰色
-- 底部的用户名改为一行浅灰色的状态栏，显示头衔、用户名与UID
-- 只修改弹框的外框与背景，弹框内的回复框、按钮等保持原样；同时开启本体的暗色模式或护眼模式时不修改
-
-## 🚀 使用方式
-
-👉[点击安装](https://greasyfork.org/zh-CN/scripts/598042)，安装即可，默认无需配置
-
-- **版面**：是否显示跟随本体的设置，在[NGA优化摸鱼体验]**设置面板**中关闭**隐藏版头/版规/子版入口**后，Excel模式下才会显示
-- **首页**：在本体中开启**Excel模式**后，打开首页即自动进入Excel模式，仍可使用本体的快捷键切换回普通模式；不需要时可在插件配置中关闭
-- **弹框**：Excel模式下自动生效，不需要时可在插件配置中关闭
-
-## ⚙️ 配置项
-
-在[NGA优化摸鱼体验]**设置面板** -> **插件管理** 中配置，修改后刷新页面生效
-
-| 配置项 | 默认值 | 说明 |
-| ---- | ---- | ---- |
-| 首页显示为Excel表格 | 开启 | 关闭后首页保持本体原有的行为，不影响版面的版头与子版面显示 |
-| 弹框使用白色样式 | 开启 | 关闭后Excel模式下的弹框保持NGA原有的米黄色样式 |
-
-## 📌 注意事项
-
-- 如果NGA将版头折叠为“点击显示隐藏的置顶内容”，插件会自动展开，效果等同于点击该按钮，不会改变NGA的显示偏好
-- 版头、子版面、首页的链接与勾选框均为NGA原生元素，功能不受影响
-- 在页面上开启或关闭**隐藏版头/版规/子版入口**后立即生效，无需刷新页面
-
-## 🐛 已知问题
-
-- 版面页出现横向滚动条并左右滚动时，行号列不会跟随移动
-- 版头的排版由各版面的版主自由编写，个别版面的版头在表格样式下可能显示不够整齐
+- 功能与 1.2.1 相同，并在页面右下角提示更名，每天最多提示一次
+- 检测到已安装新插件时，本插件自动停止运行，避免两个插件同时生效
 
 ## 💬 反馈问题
 
