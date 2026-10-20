@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         NGA优化摸鱼体验插件-Excel模式显示版头
 // @namespace    https://github.com/shizzhang0/NGA-BBS-Script-Plugins/tree/main/ExcelShowForumHeader
-// @version      1.2.2
+// @version      1.2.3
 // @author       timothy
 // @icon         data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjggMTI4Ij48cmVjdCB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgcng9IjI0IiBmaWxsPSIjMDAwIi8+PHRleHQgeD0iNjQiIHk9IjUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmb250LXNpemU9IjM2IiBmaWxsPSIjZmZmIj5OR0E8L3RleHQ+PHJlY3QgeD0iMTQiIHk9IjYwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjQ0IiByeD0iNiIgZmlsbD0iI2Y5MCIvPjxwYXRoIGQ9Ik0zNiA2OWg1NnYyNkgzNnpNMzYgODJoNTZNNTUgNjl2MjZNNzMgNjl2MjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSI2Ii8+PC9zdmc+
 // @description  【已更名】本插件已更名为“Excel模式增强”并重新发布，此版本不再更新，请安装新插件后卸载本插件
@@ -30,9 +30,9 @@
     // 本插件已更名为"Excel模式增强"并作为新脚本重新发布，此版本为旧插件的最后一个版本
     // 新插件的name，已安装新插件时本插件停止运行，避免两个插件重复添加样式
     const NEW_PLUGIN_NAME = 'ExcelModeEnhance'
-    // 新插件的介绍页，包含安装链接
-    const NEW_PLUGIN_URL = 'https://github.com/shizzhang0/NGA-BBS-Script-Plugins/tree/main/ExcelModeEnhance'
-    // 记录上次提示更名的日期，每天最多提示一次
+    // 新插件在GreasyFork上的安装页
+    const NEW_PLUGIN_URL = 'https://greasyfork.org/zh-CN/scripts/601193'
+    // 记录用户关闭更名提示的日期，当天不再提示
     const RENAME_NOTICE_KEY = 'hld__excel_show_forum_header_rename_notice'
 
     registerPlugin({
@@ -72,17 +72,33 @@
             this.renderPopup()
         },
         /**
-         * 提示本插件已更名，引导安装新插件，每天最多提示一次，点击关闭后消失
+         * 在页面顶部以黄色消息栏提示本插件已更名，引导安装新插件
+         * 每个页面都会显示，直到用户点击"今天不再提示"，当天之后的页面不再显示，次日继续提示，直到安装新插件
          */
         showRenameNotice() {
             const today = new Date().toDateString()
             if (this.mainScript.getValue(RENAME_NOTICE_KEY) == today) return
-            this.mainScript.setValue(RENAME_NOTICE_KEY, today)
+            const style = document.createElement('style')
+            style.textContent = `
+            #hld__rename-notice {position:fixed;top:12px;left:50%;z-index:99999;display:flex;align-items:center;gap:12px;box-sizing:border-box;width:max-content;max-width:calc(100% - 32px);padding:10px 16px;border:1px solid #f0c36d;border-radius:4px;background:#fff4ce;box-shadow:0 4px 12px rgba(0, 0, 0, 0.2);color:#333;font-size:14px;line-height:1.6;transform:translateX(-50%);animation:hld__rename-notice-in 0.3s ease-out;}
+            @keyframes hld__rename-notice-in {from {opacity:0;transform:translate(-50%, -16px);} to {opacity:1;transform:translate(-50%, 0);}}
+            #hld__rename-notice .hld__rename-icon {flex-shrink:0;width:22px;height:22px;border-radius:50%;background:#e8a400;color:#fff;font-weight:bold;line-height:22px;text-align:center;}
+            #hld__rename-notice b {margin-right:6px;}
+            #hld__rename-notice .hld__rename-install {flex-shrink:0;padding:4px 14px;border-radius:3px;background:#217346;color:#fff !important;font-weight:bold;text-decoration:none !important;white-space:nowrap;}
+            #hld__rename-notice .hld__rename-install:hover {background:#1a5c38;}
+            #hld__rename-notice .hld__rename-later {flex-shrink:0;color:#666 !important;font-size:13px;text-decoration:underline !important;white-space:nowrap;}
+            `
+            document.head.appendChild(style)
             const notice = document.createElement('div')
-            notice.style.cssText = 'position:fixed;right:20px;bottom:60px;z-index:99999;max-width:360px;padding:12px 32px 12px 14px;border:1px solid #d0d0d0;border-radius:4px;background:#fff;box-shadow:0 2px 8px rgba(0, 0, 0, 0.15);color:#333;font-size:13px;line-height:1.6;'
-            notice.innerHTML = `插件“Excel模式显示版头”已更名为“Excel模式增强”并重新发布，此版本不再更新。<br>请<a href="${NEW_PLUGIN_URL}" target="_blank" style="color:#0563c1;text-decoration:underline;">安装新插件</a>，安装后卸载本插件即可
-                <a href="javascript:void(0)" style="position:absolute;top:4px;right:10px;color:#999;font-size:16px;text-decoration:none;">×</a>`
-            notice.lastElementChild.addEventListener('click', () => notice.remove())
+            notice.id = 'hld__rename-notice'
+            notice.innerHTML = `<span class="hld__rename-icon">!</span>
+                <span><b>插件已更名</b>“Excel模式显示版头”已更名为“Excel模式增强”，此版本不再更新，请安装新插件后卸载本插件</span>
+                <a class="hld__rename-install" href="${NEW_PLUGIN_URL}" target="_blank">安装新插件</a>
+                <a class="hld__rename-later" href="javascript:void(0)">今天不再提示</a>`
+            notice.querySelector('.hld__rename-later').addEventListener('click', () => {
+                this.mainScript.setValue(RENAME_NOTICE_KEY, today)
+                notice.remove()
+            })
             document.body.appendChild(notice)
         },
         /**
