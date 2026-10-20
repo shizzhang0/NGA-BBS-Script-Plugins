@@ -8,9 +8,11 @@
 
 [NGA优化摸鱼体验](https://github.com/kisshang1993/NGA-BBS-Script) 插件 · 收录于 [NGA-BBS-Script-Plugins](https://github.com/shizzhang0/NGA-BBS-Script-Plugins)
 
+[![GreasyFork Version](https://img.shields.io/greasyfork/v/601193?label=%E7%89%88%E6%9C%AC&color=ff9900)](https://greasyfork.org/zh-CN/scripts/601193)
+[![GreasyFork Installs](https://img.shields.io/greasyfork/dt/601193?label=%E5%AE%89%E8%A3%85%E9%87%8F&color=ff9900)](https://greasyfork.org/zh-CN/scripts/601193)
 [![License: MIT](https://img.shields.io/badge/License-MIT-success.svg)](https://github.com/shizzhang0/NGA-BBS-Script-Plugins/blob/main/LICENSE)
 
-[**📥 GitHub 安装**](https://raw.githubusercontent.com/shizzhang0/NGA-BBS-Script-Plugins/main/ExcelModeEnhance/ExcelModeEnhance.user.js) · [反馈问题](https://github.com/shizzhang0/NGA-BBS-Script-Plugins/issues)
+[**📥 GreasyFork 安装**](https://greasyfork.org/zh-CN/scripts/601193) · [GitHub 安装](https://raw.githubusercontent.com/shizzhang0/NGA-BBS-Script-Plugins/main/ExcelModeEnhance/ExcelModeEnhance.user.js) · [反馈问题](https://github.com/shizzhang0/NGA-BBS-Script-Plugins/issues)
 
 </div>
 
@@ -102,7 +104,7 @@ NGA的弹框(开始菜单、回复、评分等)为米黄底色、深棕色边框
 
 ## 🚀 使用方式
 
-👉[点击安装](https://raw.githubusercontent.com/shizzhang0/NGA-BBS-Script-Plugins/main/ExcelModeEnhance/ExcelModeEnhance.user.js)，安装即可，默认无需配置
+👉[点击安装](https://greasyfork.org/zh-CN/scripts/601193)，安装即可，默认无需配置
 
 - **版面**：是否显示跟随本体的设置，在[NGA优化摸鱼体验]**设置面板**中关闭**隐藏版头/版规/子版入口**后，Excel模式下才会显示
 - **首页**：在本体中开启**Excel模式**后，打开首页即自动进入Excel模式，仍可使用本体的快捷键切换回普通模式；不需要时可在插件配置中关闭

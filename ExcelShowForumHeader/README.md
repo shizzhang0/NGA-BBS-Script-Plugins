@@ -8,7 +8,7 @@
 
 [NGA优化摸鱼体验](https://github.com/kisshang1993/NGA-BBS-Script) 插件 · 收录于 [NGA-BBS-Script-Plugins](https://github.com/shizzhang0/NGA-BBS-Script-Plugins)
 
-[**👉 前往新插件：Excel模式增强**](../ExcelModeEnhance)
+[**👉 前往新插件：Excel模式增强**](../ExcelModeEnhance) · [GreasyFork 安装](https://greasyfork.org/zh-CN/scripts/601193)
 
 </div>
 
@@ -22,7 +22,7 @@
 
 ## 🔄 如何迁移
 
-1. 安装新插件👉[Excel模式增强](../ExcelModeEnhance)
+1. 安装新插件👉[Excel模式增强](https://greasyfork.org/zh-CN/scripts/601193)
 2. 在脚本管理器中卸载本插件“NGA优化摸鱼体验插件-Excel模式显示版头”
 
 新插件包含本插件的全部功能，迁移后需在[NGA优化摸鱼体验]**设置面板** -> **插件管理** 中重新设置关闭过的配置项（默认全部开启）
